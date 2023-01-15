@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FoodRecipeController;
 use App\Http\Controllers\HydraController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -33,3 +34,5 @@ Route::post('login', [UserController::class, 'login']);
 
 Route::apiResource('roles', RoleController::class)->except(['create', 'edit'])->middleware(['auth:sanctum', 'ability:admin,super-admin,user']);
 Route::apiResource('users.roles', UserRoleController::class)->except(['create', 'edit', 'show', 'update'])->middleware(['auth:sanctum', 'ability:admin,super-admin']);
+
+Route::apiResource('recipes', FoodRecipeController::class)->except(['create', 'edit', 'show', 'update']);
